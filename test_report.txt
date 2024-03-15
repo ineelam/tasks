@@ -23,26 +23,34 @@ PASS src/components/ChangeType.test.tsx
 PASS src/components/CycleHoliday.test.tsx
 PASS src/components/Counter.test.tsx
 PASS src/components/RevealAnswer.test.tsx
-FAIL src/bad-components/ColoredBox.test.tsx
-  ● ColoredBox Component tests › Clicking the button advances the color.
-
-    expect(element).toHaveStyle()
-
-    - Expected
-
-    - backgroundColor: blue;
-
-      17 |         const nextColor = screen.getByRole("button");
-      18 |         nextColor.click();
-    > 19 |         expect(screen.getByTestId("colored-box")).toHaveStyle({
-         |                                                   ^
-      20 |             backgroundColor: "blue"
-      21 |         });
-      22 |         nextColor.click();
-
-      at Object.<anonymous> (src/bad-components/ColoredBox.test.tsx:19:51)
-
 PASS src/bad-components/ShoveBox.test.tsx
+PASS src/bad-components/ColoredBox.test.tsx
+  ● Console
+
+    console.error
+      Warning: Cannot update a component (`ColoredBox`) while rendering a different component (`ColorPreview`). To locate the bad setState() call inside `ColorPreview`, follow the stack trace as described in https://reactjs.org/link/setstate-in-render
+          at ColorPreview (/home/runner/work/tasks/tasks/src/bad-components/ColoredBox.tsx:24:5)
+          at div
+          at div
+          at ColoredBox (/home/runner/work/tasks/tasks/src/bad-components/ColoredBox.tsx:44:41)
+
+      25 |     colorIndex
+      26 | }: ColoredBoxProps): JSX.Element {
+    > 27 |     setColorIndex(colorIndex);
+         |     ^
+      28 |     return (
+      29 |         <div
+      30 |             data-testid="colored-box"
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
+      at warnAboutRenderPhaseUpdatesInDEV (node_modules/react-dom/cjs/react-dom.development.js:24002:15)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:21836:3)
+      at setColorIndex (node_modules/react-dom/cjs/react-dom.development.js:16139:5)
+      at ColorPreview (src/bad-components/ColoredBox.tsx:27:5)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom.development.js:14985:18)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom.development.js:17356:20)
+
 PASS src/App.test.tsx
 --------------------|---------|----------|---------|---------|-------------------
 File                | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
@@ -71,8 +79,8 @@ All files           |   99.19 |       96 |   99.18 |   99.13 |
   question.ts       |       0 |        0 |       0 |       0 |                   
 --------------------|---------|----------|---------|---------|-------------------
 
-Test Suites: 1 failed, 14 passed, 15 total
-Tests:       1 failed, 109 passed, 110 total
+Test Suites: 15 passed, 15 total
+Tests:       110 passed, 110 total
 Snapshots:   0 total
-Time:        6.674 s
+Time:        6.304 s
 Ran all test suites.
